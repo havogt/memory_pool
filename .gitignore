@@ -1,3 +1,11 @@
+# IDEs
+.settings
+.cproject
+.project
+
+# build folders
+build
+
 # Prerequisites
 *.d
 
