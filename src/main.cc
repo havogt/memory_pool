@@ -65,18 +65,6 @@ class pool : public std::enable_shared_from_this<pool> {
     size_t last_id() { return resources_.size() - 1; }
 };
 
-handle::handle(std::size_t id, std::shared_ptr<resource> res,
-               std::shared_ptr<pool> pool)
-    : id_(id), resource_(res), pool_(pool) {
-    std::cout << "creating a handle" << std::endl;
-}
-handle::~handle() {
-    if (!pool_.expired()) {
-        auto pool = pool_.lock();
-        pool->release(id_);
-    }
-}
-
 int main() {
     std::cout << "main" << std::endl;
     auto my_pool = std::make_shared<pool>("pool1"); // if we want to use
