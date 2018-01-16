@@ -8,3 +8,4 @@ Variant 1
 TODO:
 - How to create a resource with non-default ctor?
 - Multi-Pool (one object to store multiple resource types)?
+- Circular dependency between Pool and Handle..
