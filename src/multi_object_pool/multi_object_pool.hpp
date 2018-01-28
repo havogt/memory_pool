@@ -10,8 +10,7 @@ template <typename... ResourceTypes> class multi_object_pool {
   public:
     multi_object_pool()
         : map_(boost::fusion::make_pair<ResourceTypes>(
-              object_pool<ResourceTypes>(
-                  boost::typeindex::type_id<ResourceTypes>().name()))...) {}
+              object_pool<ResourceTypes>())...) {}
 
     template <typename T> std::shared_ptr<handle<T>> get_resource() {
         return boost::fusion::at_key<T>(map_).get_resource();

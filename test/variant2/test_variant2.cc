@@ -15,7 +15,7 @@ class resource {
 
 TEST(variant1, all) {
     std::cout << "main" << std::endl;
-    auto my_pool = variant2::object_pool<resource>("pool1");
+    auto my_pool = variant2::object_pool<resource>();
 
     auto h1 = my_pool.get_resource();
     auto h2 = my_pool.get_resource();
@@ -25,7 +25,7 @@ TEST(variant1, all) {
     std::cout << "----" << std::endl;
     {
         std::cout << "----" << std::endl;
-        auto my_pool2 = variant2::object_pool<resource>("pool2");
+        auto my_pool2 = variant2::object_pool<resource>();
         h1 = my_pool2.get_resource();
         auto h5 = my_pool2.get_resource();
         std::cout << "----" << std::endl;
