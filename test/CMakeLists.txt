@@ -17,3 +17,7 @@ find_package(Boost 1.58 REQUIRED)
 add_executable( test_multi_object_pool multi_object_pool/test_multi_object_pool.cc )
 target_link_libraries( test_multi_object_pool gtest gtest_main )
 target_include_directories( test_multi_object_pool PRIVATE ${Boost_INCLUDE_DIR} )
+
+add_executable( test_variant3 variant3/test_variant3.cc )
+target_link_libraries( test_variant3 gtest gtest_main )
+target_include_directories( test_variant3 PRIVATE ${Boost_INCLUDE_DIR} )
