@@ -30,3 +30,15 @@ TEST(variant3, all) {
     }
     std::cout << "----" << std::endl;
 }
+
+TEST(variant3, with_string_ctor) {
+    std::cout << "main" << std::endl;
+    auto my_pool = variant3::object_pool<
+        resource,
+        decltype(variant3::make_object_constructor<resource>("test"))>(
+        variant3::make_object_constructor<resource>("test"));
+    auto h0 = my_pool.get_resource();
+    auto h1 = my_pool.get_resource();
+    { auto h2 = my_pool.get_resource(); }
+    auto h3 = my_pool.get_resource();
+}
