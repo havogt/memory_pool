@@ -21,3 +21,9 @@ target_include_directories( test_multi_object_pool PRIVATE ${Boost_INCLUDE_DIR} 
 add_executable( test_variant3 variant3/test_variant3.cc )
 target_link_libraries( test_variant3 gtest gtest_main )
 target_include_directories( test_variant3 PRIVATE ${Boost_INCLUDE_DIR} )
+
+add_executable( test_variant3_multi variant3/test_multi_object_pool.cc )
+target_link_libraries( test_variant3_multi gtest gtest_main )
+target_include_directories( test_variant3_multi PRIVATE ${Boost_INCLUDE_DIR} )
+
+set_target_properties(test_variant3 test_variant3_multi PROPERTIES CXX_STANDARD 14)

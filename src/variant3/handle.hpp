@@ -39,6 +39,9 @@ template <typename ResourceType> class handle {
         }
     }
 
+    // TODO this should probably be a shared_ptr
+    operator ResourceType() { return *resource_; }
+
     std::shared_ptr<ResourceType> get() { return resource_; }
 
   private:

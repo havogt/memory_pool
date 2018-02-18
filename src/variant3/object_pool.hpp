@@ -51,6 +51,7 @@ class object_pool {
     }
 
     object_pool(object_pool &&other) = default;
+    object_pool(const object_pool &other) = default;
 
     //    template <typename... Args>
     //    object_pool(Args &&... args)
@@ -70,8 +71,18 @@ class object_pool {
   private:
     Constructor constructor_;
     std::shared_ptr<handle_manager> handle_manager_;
-    std::vector<std::shared_ptr<ResourceType>> resources_;
+    std::vector<std::shared_ptr<ResourceType>>
+        resources_; // TODO test copying an object pool.
 
     size_t last_id() { return resources_.size() - 1; }
 };
+
+template <typename ResourceType, typename... CtorArgs>
+auto make_object_pool(CtorArgs &&... args)
+    -> object_pool<ResourceType,
+                   decltype(make_object_constructor<ResourceType>(args...))> {
+    return object_pool<
+        ResourceType, decltype(make_object_constructor<ResourceType>(args...))>(
+        make_object_constructor<ResourceType>(args...));
+}
 }
